@@ -1,0 +1,93 @@
+@import fonts
+@import base
+@import vars
+
+// HEADER
+.header
+	height: 100vh
+	position: relative
+	overflow: hidden
+.picture
+	filter: blur(5px)
+	transform: scale(1.02)
+	width: 100%
+	height: 100%
+.text
+	position: absolute
+	margin-top: 10%
+	
+// ABOUT
+.content
+	grid-template-columns:  minmax(320px, 1280px)
+	justify-content: center
+.article
+	grid-template-columns: 4fr 1fr
+	grid-column-gap: 20px
+	.image
+		grid-column: 2
+		img
+			min-width: 200px
+			border-radius: 100%
+	h1
+		grid-column: span 2
+		text-align: center
+		text-transform: uppercase
+		margin-top: 50px
+	.textabout
+		grid-column: 1
+		align-self: center
+.accordeon
+	margin-top: 50px
+	color: $white
+	.collapsible-header
+		background: $base
+		border-bottom: $border
+		span
+			width: 100%
+			text-align: center
+			text-transform: uppercase
+	.collapsible-body
+		grid-template-columns: 1fr 1fr
+		grid-column-gap: 100px
+		color: $black
+		img
+			height: 350px
+// DONATE
+.donate
+	position: relative
+	grid-template-columns: 1fr
+.imagedonate
+	height: 360px
+	overflow: hidden
+	position: relative
+	img
+		position: absolute
+		width: 1920px
+		top: -140px
+
+.btndonate
+	background: $accent
+	width: 200px
+	justify-self: center
+	margin-top: 50px
+	&:hover
+		background: lighten($accent,10%)
+
+.textdonate
+	position: relative
+	color: $white
+	text-align: center
+	// background: fade-out($white, .7)
+	height: 120px
+	overflow: hidden
+	.blur
+		position: absolute
+		width: 100%
+		height: 100%
+		filter: blur(5px)
+		background: #fff
+	p
+		justify-self: center
+		width: 1100px
+// ADAPTIVE
+@import media
