@@ -130,41 +130,150 @@ h6 {
 
 .donate {
   position: relative;
-  grid-template-columns: 1fr; }
-
-.imagedonate {
-  height: 360px;
-  overflow: hidden;
-  position: relative; }
-  .imagedonate img {
-    position: absolute;
-    width: 1920px;
-    top: -140px; }
+  grid-template-columns: 1fr;
+  margin-top: 50px; }
 
 .btndonate {
-  background: #CE102D;
-  width: 200px;
+  width: 250px;
   justify-self: center;
-  margin-top: 50px; }
+  margin-top: 50px;
+  z-index: 1;
+  border-radius: 5px;
+  background-color: #CE102D; }
   .btndonate:hover {
-    background: #ee2342; }
+    background-color: #ee2342; }
+
+.pulse::before {
+  -webkit-animation: pulse-animation 1.5s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+          animation: pulse-animation 1.5s cubic-bezier(0.24, 0, 0.38, 1) infinite; }
+
+.imagedonate {
+  background: url("../img/img2.jpg");
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  position: relative; }
+  .imagedonate .blurewrapper {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    top: 10px; }
+    .imagedonate .blurewrapper::before {
+      content: "";
+      position: absolute;
+      background: #fff;
+      opacity: 0.3;
+      width: 100%;
+      height: 100%;
+      z-index: 1; }
+  .imagedonate .blure {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+    position: absolute;
+    background: url("../img/img2.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 300px;
+    top: -164px; }
 
 .textdonate {
+  z-index: 1;
   position: relative;
   color: #ffffff;
   text-align: center;
-  height: 120px;
-  overflow: hidden; }
-  .textdonate .blur {
-    position: absolute;
+  margin-top: 15px; }
+
+.progres {
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  color: #ffffff;
+  margin-top: 50px; }
+  .progres span {
+    font-style: italic;
+    font-weight: 300; }
+  .progres h4 {
+    font-weight: bold;
+    color: #ffffff; }
+
+.block {
+  background: #55C1E9;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  grid-template-rows: -webkit-min-content;
+  grid-template-rows: min-content;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .block h4 {
+    margin-top: 50px;
+    font-size: 50px; }
+  .block span {
+    margin-top: 25px;
+    max-width: 250px; }
+
+.contacts {
+  grid-template-columns: 1fr;
+  margin-top: 50px; }
+
+.imgcontacts {
+  background: url("../img/footer.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  grid-template-rows: -webkit-min-content -webkit-min-content;
+  grid-template-rows: min-content min-content; }
+  .imgcontacts h1 {
+    color: #ffffff;
+    text-align: center; }
+  .imgcontacts .blurewrapper {
     width: 100%;
-    height: 100%;
-    -webkit-filter: blur(5px);
-            filter: blur(5px);
-    background: #fff; }
-  .textdonate p {
-    justify-self: center;
-    width: 1100px; }
+    overflow: hidden;
+    position: relative;
+    grid-template-columns: minmax(320px, 1080px); }
+    .imgcontacts .blurewrapper::before {
+      content: "";
+      position: absolute;
+      background: #fff;
+      opacity: 0.4;
+      width: 100%;
+      height: 100%;
+      z-index: 1; }
+  .imgcontacts .blure {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+    position: absolute;
+    background: url("../img/footer.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 400px;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5); }
+  .imgcontacts .textcontacts {
+    z-index: 1;
+    grid-template-columns: 1fr -webkit-min-content 1fr;
+    grid-template-columns: 1fr min-content 1fr;
+    grid-template-rows: repeat(3, -webkit-min-content);
+    grid-template-rows: repeat(3, min-content); }
+    .imgcontacts .textcontacts .hr {
+      width: 1px;
+      border-right: 1px solid #ffffff;
+      height: 80%;
+      -ms-flex-item-align: center;
+          align-self: center; }
+    .imgcontacts .textcontacts .left {
+      grid-template-columns: 1fr;
+      margin: 50px 50px;
+      grid-row-gap: 20px; }
+      .imgcontacts .textcontacts .left img {
+        height: 40px;
+        margin-right: 20px; }
 
 /*==========  Desktop First  ========== */
 /* Large Devices, Wide Screens */
