@@ -12,7 +12,9 @@ var gulp = require('gulp'),
 	wiredep = require('gulp-wiredep'),
 	useref = require('gulp-useref'),
 	tiny = require('gulp-tinypng'),
-	ftp = require('vinyl-ftp');
+	ftp = require('vinyl-ftp'),
+	uncss = require('gulp-uncss'),
+	newer = require('gulp-newer');
 
 // FTP
 gulp.task('ftp', function () {
@@ -37,8 +39,10 @@ gulp.task('ftp', function () {
 gulp.task('build', ['clean', 'tiny', 'combine'], function () {
 	var buildFonts = gulp.src('app/fonts/**/*')
 		.pipe(gulp.dest('dist/fonts'))
-	var buildFonts = gulp.src('app/js/all4site-fontawesome/dist/fonts/*')
+	var buildFonts = gulp.src('app/js/all4site-fontawesome/dist/fonts/**/*')
 		.pipe(gulp.dest('dist/fonts/'))
+	var buildFonts = gulp.src('app/img/*.svg')
+		.pipe(gulp.dest('dist/img/'))
 	var buildUncss = gulp.src('dist/css/main.min.css')
 		.pipe(uncss({
 			html: ['dist/index.html']
@@ -47,13 +51,14 @@ gulp.task('build', ['clean', 'tiny', 'combine'], function () {
 });
 
 gulp.task('tiny', function () {
-	gulp.src('src/img/*')
+	gulp.src(['app/img/*.jpg', 'app/img/*.png'])
+		.pipe(newer('dist/img'))
 		.pipe(tiny('eKJf273ZwggolXsloo3tDizmOiER9tgr'))
 		.pipe(gulp.dest('dist/img'));
 });
 
 gulp.task('combine', function () {
-	return gulp.src('app/*.jade')
+	return gulp.src('app/index.jade')
 		.pipe(jade({
 			pretty: true
 		}))
@@ -63,12 +68,12 @@ gulp.task('combine', function () {
 		}))
 		.pipe(useref())
 		.pipe(gulpif('*.js', uglify()))
-		.pipe(gulpif('*.css', csso()))
+		// .pipe(gulpif('*.css', csso()))
 		.pipe(gulp.dest('dist'))
 });
 
 gulp.task('clean', function () {
-	return del.sync('dist');
+	return del.sync(['dist/css', 'dist/fonts', 'dist/js', 'dist/index.html']);
 });
 
 

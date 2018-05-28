@@ -13,6 +13,15 @@
 	transform: scale(1.02)
 	width: 100%
 	height: 100%
+	position: relative
+
+.logosb
+	position: absolute
+	justify-self: center
+	align-self: center
+
+	img
+		width: 500px
 
 .text
 	position: absolute
@@ -71,16 +80,16 @@
 	grid-template-columns: 1fr
 	margin-top: 50px
 
-.btndonate
-	width: 250px
-	justify-self: center
-	margin-top: 50px
-	z-index: 1
-	border-radius: 5px
-	background-color: $accent
+	a
+		justify-self: center
+		margin-top: 50px
+		z-index: 1
+		background: $accent
+		color: $white
 
-	&:hover
-		background-color: lighten($accent, 10%)
+		&:hover
+			background-color: lighten($accent, 10%)
+			text-decoration: none
 
 .pulse::before
 	animation: pulse-animation 1.5s cubic-bezier(0.24, 0, 0.38, 1) infinite
@@ -104,7 +113,7 @@
 		&::before
 			content: ""
 			position: absolute
-			background: #fff
+			background: darken($white, 50%)
 			opacity: 0.3
 			width: 100%
 			height: 100%
@@ -170,30 +179,34 @@
 	background: url("../img/footer.jpg")
 	background-position: center
 	background-size: cover
-	height: 400px
+	min-height: 500px
 	justify-content: center
-	grid-template-rows: min-content min-content
+	// grid-template-rows: min-content min-content
+	grid-template-columns: 1fr
+	position: relative
 
 	h1
 		color: $white
 		text-align: center
 
+	$top: 100px
+	$right: 10vw
+	$bottom: 50px
+	$left: 20vw
 
 	.blurewrapper
 		width: 100%
-		overflow: hidden
 		position: relative
-		height: 300px
-		grid-template-columns: minmax(320px, 1080px)
 
 		&::before
 			content: ""
 			position: absolute
-			background: #fff
+			background: darken($white, 80%)
 			opacity: 0.4
 			width: 100%
 			height: 100%
 			z-index: 1
+			clip-path: inset($top $left $bottom $left)
 
 	.blure
 		filter: blur(10px)
@@ -202,26 +215,101 @@
 		background-size: cover
 		background-position: center
 		width: 100%
-		height: 315px
-		transform: scale(1.5)
+		height: 100%
+		clip-path: inset($top $left $bottom $left)
+
 	.textcontacts
+		margin-left: 20vw
+		margin-right: 20vw
 		z-index: 1
+		justify-self: center
 		grid-template-columns: 1fr min-content 1fr
-		grid-template-rows: repeat(3,min-content)
+		grid-template-rows: repeat(3, min-content)
+
 		.hr
 			width: 1px
 			border-right: 1px solid $white
 			height: 80%
 			align-self: center
+
 		.left
-			grid-template-columns: 1fr
-			margin: 50px 50px
-			grid-row-gap: 20px
+			grid-template-columns: min-content 1fr
+			margin: 50px
+			grid-column-gap: 20px
+			grid-row-gap: 30px
+
 			img
-				height: 40px
-				margin-right: 20px
+				min-width: 50px
 
+			a
+				color: $white
+				font-size: 30px
+				transition: color 1s
 
+				&:hover
+					text-decoration: none
+					color: darken($base, 40%)
+
+					img
+						background: red
+
+		.right
+			grid-template-columns: 1fr
+			grid-template-rows: min-content min-content
+			justify-items: center
+
+			.social
+				grid-template-columns: repeat(3, min-content)
+				grid-column-gap: 50px
+
+				a:hover
+					text-decoration: none
+
+				.icon
+					width: 80px
+					height: 80px
+					background: $base
+					border-radius: 100%
+					justify-content: center
+					transition: background 1s
+
+					&:hover
+						background: darken($base, 30%)
+
+					.fab
+						color: $white
+						font-size: 30px
+						align-self: center
+
+			.con
+				color: $white
+				margin-top: 30px
+				font-size: 22px
+
+				.email
+					grid-template-columns: min-content 1fr
+					align-items: center
+
+				i
+					font-size: 30px
+					margin-right: 20px
+
+				.phone
+					grid-template-columns: min-content 1fr min-content
+					grid-template-rows: 1fr 1fr
+					grid-row-gap: 10px
+
+					i
+						align-self: center
+						grid-column: 1
+						grid-row: span 2
+
+					span
+						grid-column: 2
+
+					small
+						margin-left: 10px
+						align-self: center
 
 // ADAPTIVE
 @import media
